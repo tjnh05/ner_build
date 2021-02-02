@@ -1,4 +1,4 @@
-# ner
+# pyner
 
 SDK to access API of Ner service
 

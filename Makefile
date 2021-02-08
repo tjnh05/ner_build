@@ -10,10 +10,10 @@ create:
 uptest:
         python -m twine upload --repository testpypi dist/*
 # uninstall package and test APP
-testapp:
+test:
         make uninstall
         pip --no-cache-dir install --index-url https://test.pypi.org/simple/ $(PACKAGE)=$(VERSION)
-        make test
+        make testapp
 
 
 # upload to pypi
@@ -25,7 +25,7 @@ install:
         pip --no-cache-dir install --index-url https://pypi.org/simple/ $(PACKAGE)==$(VERSION)
 
 # test command
-test:
+testapp:
         python -m pyner.ner --nertype stanford --sentence 'hello, chongqing, intel, IBM, Tecent. Bill Gates said.' --classifier 7class
         python -m pyner.ner --nertype stanford --sentence 'hello, chongqing, intel, IBM, Tecent. Bill Gates said.' --classifier 4class
         python -m pyner.ner --nertype stanford --sentence 'hello, chongqing, intel, IBM, Tecent. Bill Gates said.' --classifier 3class

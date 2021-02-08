@@ -3,7 +3,7 @@ import setuptools, os
 import sys
 
 packagename= "pyner"
-version ="0.0.8"
+version = "0.0.8"
 path = os.path.join(os.getcwd(),packagename, "README.md")
 requiredments = os.path.join(os.getcwd(),packagename, "requirements.txt")
 

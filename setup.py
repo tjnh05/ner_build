@@ -3,7 +3,16 @@ import setuptools, os
 import sys
 
 packagename= "pyner"
-version = "0.0.8"
+
+version = ""
+here = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(here, packagename, "ner.py")) as f:
+    for line in f.readlines():
+        if "__version__" in line:
+            version = line.strip().replace('"', '').split()[-1]
+            break
+
+
 path = os.path.join(os.getcwd(),packagename, "README.md")
 requiredments = os.path.join(os.getcwd(),packagename, "requirements.txt")
 
@@ -31,6 +40,11 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     package_data={
         'pyner': ['test.txt','requirements.txt']
+    },
+    entry_points = {
+        "console_scripts": [
+            "ner=pyner.ner:main"
+        ]
     },
     install_requires=requiredpackages,
     classifiers=[
